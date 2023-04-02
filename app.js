@@ -28,7 +28,7 @@ app.post('/sendEmail/', (req, res) => {
         service: 'gmail',
         auth: {
           user: 'arjunagnihotri14a@gmail.com',
-          pass: 'mqzgoozcnlowujqp'
+          pass: process.env.PASSWORD || 'mqzgoozcnlowujqp'
         }
       });
       
@@ -36,7 +36,8 @@ app.post('/sendEmail/', (req, res) => {
 
       var mailOptions = {
         from: 'arjunagnihotri14a@gmail.com',
-        to: 'info@redpositive.in',
+        // to: 'info@redpositive.in',
+        to: 'arjunagnihotrikanpur@gmail.com',
         subject: 'Sending Email using Node.js',
         text: body
       };
@@ -54,7 +55,8 @@ app.post('/sendEmail/', (req, res) => {
 })
 
 // Connect to DB
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true })
+// mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://arjunagnihotri:anillusion@cluster0.lc7ulxl.mongodb.net/internshiptask', { useNewUrlParser: true })
 .then(() => {
     console.log('connected to db')
 })
